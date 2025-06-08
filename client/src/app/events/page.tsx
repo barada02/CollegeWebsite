@@ -3,7 +3,22 @@ import { fetchAllEvents } from "@/lib/api";
 
 export default async function EventsPage() {
   // Fetch all events
-  const events = await fetchAllEvents();
+  interface Event {
+    _id: string;
+    title: string;
+    description: string;
+    date: string;
+    location: string;
+    image?: string;
+  }
+
+  let events: Event[] = [];
+  try {
+    events = await fetchAllEvents();
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    // Continue with empty events array
+  }
 
   // Separate upcoming and past events
   const currentDate = new Date();

@@ -9,7 +9,14 @@ interface EventPageProps {
 }
 
 export default async function EventDetailPage({ params }: EventPageProps) {
-  const event = await fetchEventById(params.id);
+  let event;
+  
+  try {
+    event = await fetchEventById(params.id);
+  } catch (error) {
+    console.error("Error fetching event:", error);
+    notFound();
+  }
 
   if (!event) {
     notFound();

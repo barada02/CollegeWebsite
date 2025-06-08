@@ -10,12 +10,18 @@ const api = axios.create({
   },
 });
 
+// Check if we're in a browser environment
+const isBrowser = typeof window !== 'undefined';
+
 // Add a request interceptor to include the token in authenticated requests
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers['x-auth-token'] = token;
+    // Only try to get token from localStorage in browser environment
+    if (isBrowser) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers['x-auth-token'] = token;
+      }
     }
     return config;
   },
@@ -79,6 +85,11 @@ export const createData = async (data: { title: string; description: string }): 
 
 // Event API Functions
 export const fetchAllEvents = async (params?: { past?: boolean; upcoming?: boolean }): Promise<Event[]> => {
+  // Check if we're in a server environment and avoid making requests
+  if (!isBrowser) {
+    return [];
+  }
+  
   try {
     const response = await api.get('/events', { params });
     return response.data.events;
@@ -89,6 +100,11 @@ export const fetchAllEvents = async (params?: { past?: boolean; upcoming?: boole
 };
 
 export const fetchEventById = async (id: string): Promise<Event | null> => {
+  // Check if we're in a server environment and avoid making requests
+  if (!isBrowser) {
+    return null;
+  }
+  
   try {
     const response = await api.get(`/events/${id}`);
     return response.data;

@@ -1,9 +1,18 @@
 import Link from "next/link";
-import { fetchAllEvents } from "@/lib/api";
+import { getEvents } from "@/lib/server-api";
+
+interface Event {
+  _id: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
+  image?: string;
+}
 
 export default async function Home() {
-  // Fetch upcoming events for the homepage
-  const events = await fetchAllEvents({ upcoming: true });
+  // Fetch upcoming events for the homepage using server-side API function
+  const events = await getEvents({ upcoming: true }) as Event[];
   const featuredEvents = events.slice(0, 3); // Take the first 3 upcoming events
 
   return (
