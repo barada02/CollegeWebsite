@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -22,8 +23,20 @@ export default function Header() {
     // Listen for storage events (in case user logs in/out in another tab)
     window.addEventListener('storage', checkAuth);
     
+    // Add scroll event listener for sticky header
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
       window.removeEventListener('storage', checkAuth);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -39,7 +52,9 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-900 text-white">
+    <header className={`bg-blue-900 text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'shadow-md bg-blue-900/95 backdrop-blur-sm' : ''
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo and site name */}
