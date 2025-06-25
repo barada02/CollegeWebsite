@@ -26,7 +26,7 @@ export const CollegeHeader: React.FC = () => {
             <div className="nav-links">
               <Link to="/" className="nav-link">Home</Link>
               <Link to="/about" className="nav-link">About</Link>
-              <Link to="/events" className="nav-link">Events</Link>
+              <Link to="/academics" className="nav-link">Academics</Link>
               <Link to="/admissions" className="nav-link">Admissions</Link>
               <Link to="/contact" className="nav-link">Contact</Link>
             </div>
