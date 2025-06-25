@@ -250,7 +250,8 @@ class ApiService {
 - **React 18** with TypeScript
 - **React Router** for routing
 - **Axios** for HTTP requests
-- **CSS/Tailwind** for styling
+- **Ark UI** for component library
+- **Regular CSS** for styling (no Tailwind)
 
 ### **State Management**
 - **React Context** for auth state

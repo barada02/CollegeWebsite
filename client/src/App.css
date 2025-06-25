@@ -1,7 +1,7 @@
-/* Clean slate for styling */
+/* Main App Container */
 .app {
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  width: 100%;
 }
 
-/* You can add your custom styles here */
+/* Global app-level styles can go here */
