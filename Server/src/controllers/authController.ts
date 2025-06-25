@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import jwt from 'jsonwebtoken';
 import User, { IUser } from '../models/User';
 
 // Register a new admin user
@@ -33,29 +32,16 @@ export const registerAdmin = async (req: Request, res: Response): Promise<void> 
     // Save user to database
     await user.save();
 
-    // Create JWT payload
-    const payload = {
-      id: user.id,
-      role: user.role
-    };
-
-    // Use a direct string as the secret
-    const secretKey = process.env.JWT_SECRET || 'fallback_secret_key_for_dev_only';
-    
-    // Use callback version to avoid type issues
-    jwt.sign(
-      payload,
-      secretKey,
-      { expiresIn: '1d' },
-      (err, token) => {
-        if (err) {
-          console.error('Error signing JWT token:', err);
-          res.status(500).json({ message: 'Error creating authentication token' });
-          return;
-        }
-        res.status(201).json({ token });
+    // Return success response with user info (without password)
+    res.status(201).json({ 
+      message: 'Admin user created successfully',
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
       }
-    );
+    });
   } catch (error) {
     console.error('Error in registerAdmin:', error);
     res.status(500).json({ message: 'Server error' });
@@ -88,49 +74,30 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Create JWT payload
-    const payload = {
-      id: user.id,
-      role: user.role
-    };
-
-    // Use a direct string as the secret
-    const secretKey = process.env.JWT_SECRET || 'fallback_secret_key_for_dev_only';
-    
-    // Use callback version to avoid type issues
-    jwt.sign(
-      payload,
-      secretKey,
-      { expiresIn: '1d' },
-      (err, token) => {
-        if (err) {
-          console.error('Error signing JWT token:', err);
-          res.status(500).json({ message: 'Error creating authentication token' });
-          return;
-        }
-        res.json({ token });
+    // Return success response with user info (without password)
+    res.json({ 
+      message: 'Login successful',
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
       }
-    );
+    });
   } catch (error) {
     console.error('Error in login:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-// Get user profile
-export const getProfile = async (req: Request, res: Response): Promise<void> => {
+// Get all users (simplified - no authentication required for now)
+export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
   try {
-    // Get user without password
-    const user = await User.findById((req as any).user.id).select('-password');
-    
-    if (!user) {
-      res.status(404).json({ message: 'User not found' });
-      return;
-    }
-    
-    res.json(user);
+    // Get all users without password
+    const users = await User.find().select('-password');
+    res.json(users);
   } catch (error) {
-    console.error('Error in getProfile:', error);
+    console.error('Error in getAllUsers:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };

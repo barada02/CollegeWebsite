@@ -1,3 +1,7 @@
+// This middleware is currently not used since JWT authentication has been simplified
+// Uncomment when JWT authentication is re-implemented
+
+/*
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -30,3 +34,4 @@ export const auth = (req: AuthRequest, res: Response, next: NextFunction): void 
     res.status(401).json({ message: 'Token is not valid' });
   }
 };
+*/
