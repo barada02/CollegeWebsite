@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Button from '../../components/shared/Button';
 import './Dashboard.css';
 
@@ -10,16 +9,8 @@ export const Dashboard: React.FC = () => {
         {/* Dashboard Header */}
         <div className="dashboard-header">
           <div>
-            <h1 className="dashboard-title">Admin Dashboard</h1>
-            <p className="dashboard-subtitle">Welcome back! Manage your college website content.</p>
-          </div>
-          <div className="header-actions">
-            <Link to="/">
-              <Button variant="admin" size="sm">View College Website</Button>
-            </Link>
-            <Link to="/admin/login">
-              <Button variant="admin" size="sm">Logout</Button>
-            </Link>
+            <h1 className="dashboard-title">Dashboard Overview</h1>
+            <p className="dashboard-subtitle">Welcome back! Here's what's happening at Excellence University.</p>
           </div>
         </div>
 

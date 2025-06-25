@@ -1,0 +1,210 @@
+/* Manage About Page Styles */
+.manage-about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.page-subtitle {
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Content Sections */
+.content-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin: 0;
+  font-weight: 600;
+  flex: 1;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--color-background);
+}
+
+.info-card h3 {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.info-card p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Stats Management */
+.stats-management {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-background);
+}
+
+.stat-item label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+
+.stat-item input {
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: white;
+}
+
+.stat-item input:read-only {
+  background: var(--color-background);
+  color: var(--color-text-secondary);
+}
+
+/* Achievements List */
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.achievement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-background);
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-content h3 {
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.achievement-content p {
+  color: var(--color-text-secondary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.achievement-date {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.achievement-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-management {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievement-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .achievement-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .info-card,
+  .stat-item,
+  .achievement-item {
+    padding: 1rem;
+  }
+}
