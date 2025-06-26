@@ -1,0 +1,17 @@
+/* College Layout Styles */
+.college-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--college-background);
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+}
+
+/* Ensure proper spacing between header and content */
+.college-layout .main-content {
+  padding-top: 0;
+}

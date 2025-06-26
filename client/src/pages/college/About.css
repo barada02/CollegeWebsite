@@ -1,0 +1,125 @@
+/* About Page Styles */
+.about-page {
+  padding: 2rem 0;
+  min-height: 80vh;
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+  border-radius: 16px;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 3rem;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Overview Section */
+.about-overview {
+  margin-bottom: 3rem;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.overview-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-4px);
+}
+
+.overview-card h3 {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.overview-card p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Stats Section */
+.about-stats {
+  background: var(--color-primary);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.stat-item {
+  padding: 1rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    padding: 2rem 0;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

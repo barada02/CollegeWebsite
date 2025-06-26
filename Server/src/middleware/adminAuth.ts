@@ -1,3 +1,7 @@
+// This middleware is currently not used since JWT authentication has been simplified
+// Uncomment when JWT authentication is re-implemented
+
+/*
 import { Request, Response, NextFunction } from 'express';
 
 // Interface for extending Express Request
@@ -21,3 +25,4 @@ export const adminAuth = (req: AuthRequest, res: Response, next: NextFunction): 
   // If user is admin, proceed
   next();
 };
+*/

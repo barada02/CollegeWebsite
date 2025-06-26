@@ -1,7 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { registerAdmin, login, getProfile } from '../controllers/authController';
-import { auth } from '../middleware/auth';
+import { registerAdmin, login, getAllUsers } from '../controllers/authController';
 
 const router = express.Router();
 
@@ -19,7 +18,7 @@ router.post(
 );
 
 // @route   POST /api/auth/login
-// @desc    Authenticate user & get token
+// @desc    Authenticate user (simplified - no token)
 // @access  Public
 router.post(
   '/login',
@@ -30,9 +29,9 @@ router.post(
   login
 );
 
-// @route   GET /api/auth/profile
-// @desc    Get user profile
-// @access  Private
-router.get('/profile', auth, getProfile);
+// @route   GET /api/auth/users
+// @desc    Get all users (simplified - no authentication required)
+// @access  Public
+router.get('/users', getAllUsers);
 
 export default router;

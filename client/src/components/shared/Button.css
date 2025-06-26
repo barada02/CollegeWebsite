@@ -1,0 +1,65 @@
+/* Button Styles */
+
+/* Base button styles inherited from global.css */
+
+/* College button variant */
+.btn-college {
+  background-color: var(--college-primary);
+  color: white;
+  border: 1px solid var(--college-primary);
+}
+
+.btn-college:hover:not(:disabled) {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-college:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Admin button variant */
+.btn-admin {
+  background-color: var(--admin-primary);
+  color: white;
+  border: 1px solid var(--admin-primary);
+}
+
+.btn-admin:hover:not(:disabled) {
+  background-color: #111827;
+  border-color: #111827;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-admin:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Button sizes */
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.75rem;
+}
+
+.btn-md {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1rem;
+}
+
+/* Disabled state */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}

@@ -7,8 +7,6 @@ import {
   updateEvent, 
   deleteEvent 
 } from '../controllers/eventController';
-import { auth } from '../middleware/auth';
-import { adminAuth } from '../middleware/adminAuth';
 
 const router = express.Router();
 
@@ -24,12 +22,10 @@ router.get('/:id', getEventById);
 
 // @route   POST /api/events
 // @desc    Create a new event
-// @access  Private/Admin
+// @access  Public (simplified - no authentication required)
 router.post(
   '/',
   [
-    auth,
-    adminAuth,
     check('title', 'Title is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
     check('date', 'Valid date is required').isISO8601().toDate(),
@@ -41,12 +37,10 @@ router.post(
 
 // @route   PUT /api/events/:id
 // @desc    Update an event
-// @access  Private/Admin
+// @access  Public (simplified - no authentication required)
 router.put(
   '/:id',
   [
-    auth,
-    adminAuth,
     check('title', 'Title is required if provided').optional().not().isEmpty(),
     check('description', 'Description is required if provided').optional().not().isEmpty(),
     check('date', 'Valid date is required if provided').optional().isISO8601().toDate(),
@@ -58,7 +52,7 @@ router.put(
 
 // @route   DELETE /api/events/:id
 // @desc    Delete an event
-// @access  Private/Admin
-router.delete('/:id', [auth, adminAuth], deleteEvent);
+// @access  Public (simplified - no authentication required)
+router.delete('/:id', deleteEvent);
 
 export default router;

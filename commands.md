@@ -1,10 +1,14 @@
 # Client Setup
-## Navigate to the client directory
-mkdir client
-cd client
+## React installation with Vite
+```bash
+npm create vite@latest client -- --template react-ts
+```
 
-## Initialize a new Next.js app with TypeScript
-npx create-next-app@latest . --typescript --eslint --tailwind --app --src-dir --import-alias "@/*"
+## Navigate to the client directory
+```bash
+cd client
+nmp install
+```
 
 # Install additional dependencies we'll need
 npm install axios

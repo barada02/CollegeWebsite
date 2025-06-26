@@ -1,0 +1,7 @@
+/* Main App Container */
+.app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Global app-level styles can go here */
