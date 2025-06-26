@@ -12,7 +12,9 @@ router.get('/', aboutController.getAbout);
 router.put('/', /* adminAuth, */ aboutController.updateAbout);
 router.put('/stats', /* adminAuth, */ aboutController.updateStats);
 router.post('/achievements', /* adminAuth, */ aboutController.addAchievement);
+router.delete('/achievements/:id', /* adminAuth, */ aboutController.deleteAchievement);
 router.post('/leadership', /* adminAuth, */ aboutController.addLeadershipMember);
+router.delete('/leadership/:id', /* adminAuth, */ aboutController.deleteLeadershipMember);
 
 // Development/initialization route (remove in production)
 router.post('/initialize', aboutController.initializeAbout);

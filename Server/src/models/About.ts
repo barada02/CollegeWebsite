@@ -13,12 +13,14 @@ export interface IAbout extends Document {
     yearsOfExcellence: number;
   };
   achievements: Array<{
+    _id?: mongoose.Types.ObjectId;
     title: string;
     description: string;
     year: number;
     date?: Date;
   }>;
   leadership: Array<{
+    _id?: mongoose.Types.ObjectId;
     name: string;
     position: string;
     bio: string;

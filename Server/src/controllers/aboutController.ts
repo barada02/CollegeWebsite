@@ -253,6 +253,114 @@ export class AboutController {
     }
   }
 
+  // Delete achievement (admin only)
+  public async deleteAchievement(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'Achievement ID is required'
+        });
+        return;
+      }
+
+      const about = await About.findOne();
+      
+      if (!about) {
+        res.status(404).json({
+          success: false,
+          message: 'About information not found'
+        });
+        return;
+      }
+
+      // Find and remove the achievement
+      const initialLength = about.achievements.length;
+      about.achievements = about.achievements.filter(achievement => 
+        achievement._id?.toString() !== id
+      );
+
+      if (about.achievements.length === initialLength) {
+        res.status(404).json({
+          success: false,
+          message: 'Achievement not found'
+        });
+        return;
+      }
+
+      about.updatedAt = new Date();
+      await about.save();
+
+      res.status(200).json({
+        success: true,
+        message: 'Achievement deleted successfully'
+      });
+    } catch (error) {
+      console.error('Error deleting achievement:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error deleting achievement',
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  }
+
+  // Delete leadership member (admin only)
+  public async deleteLeadershipMember(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'Leadership member ID is required'
+        });
+        return;
+      }
+
+      const about = await About.findOne();
+      
+      if (!about) {
+        res.status(404).json({
+          success: false,
+          message: 'About information not found'
+        });
+        return;
+      }
+
+      // Find and remove the leadership member
+      const initialLength = about.leadership.length;
+      about.leadership = about.leadership.filter(leader => 
+        leader._id?.toString() !== id
+      );
+
+      if (about.leadership.length === initialLength) {
+        res.status(404).json({
+          success: false,
+          message: 'Leadership member not found'
+        });
+        return;
+      }
+
+      about.updatedAt = new Date();
+      await about.save();
+
+      res.status(200).json({
+        success: true,
+        message: 'Leadership member deleted successfully'
+      });
+    } catch (error) {
+      console.error('Error deleting leadership member:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error deleting leadership member',
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  }
+
   // Initialize about data with default values (for development)
   public async initializeAbout(req: Request, res: Response): Promise<void> {
     try {
