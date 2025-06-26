@@ -8,6 +8,7 @@ export const AdminSidebar: React.FC = () => {
   const menuItems = [
     { path: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/admin/about', label: 'About Management', icon: '📝' },
+    { path: '/admin/contacts', label: 'Contact Messages', icon: '📬' },
     { path: '/admin/events', label: 'Events', icon: '📅' },
     { path: '/admin/faculty', label: 'Faculty', icon: '👨‍🏫' },
     { path: '/admin/students', label: 'Students', icon: '👥' },
