@@ -285,3 +285,54 @@
 .leader-contact a:hover {
   background: var(--color-primary-dark, #1d4ed8);
 }
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+  .section-content h2 {
+    font-size: 2rem;
+  }
+
+  .achievement-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .achievement-year {
+    align-self: center;
+  }
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-history, .about-achievements, .about-leadership {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-content {
+    padding: 0 0.5rem;
+  }
+
+  .section-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .overview-card, .leader-card, .achievement-item {
+    padding: 1.5rem;
+  }
+
+  .history-text {
+    font-size: 1.1rem;
+  }
+
+  .achievement-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .achievement-content p {
+    font-size: 1rem;
+  }
+}

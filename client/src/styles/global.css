@@ -2,6 +2,8 @@
 :root {
   /* College Theme Colors */
   --college-primary: #2563eb;
+  --college-primary-dark: #1d4ed8;
+  --college-primary-light: #3b82f6;
   --college-secondary: #10b981;
   --college-accent: #f59e0b;
   --college-background: #ffffff;
@@ -11,6 +13,8 @@
   
   /* Admin Theme Colors */
   --admin-primary: #374151;
+  --admin-primary-dark: #111827;
+  --admin-primary-light: #4b5563;
   --admin-secondary: #3b82f6;
   --admin-accent: #8b5cf6;
   --admin-background: #f9fafb;
@@ -18,6 +22,18 @@
   --admin-text: #111827;
   --admin-text-light: #6b7280;
   --admin-border: #d1d5db;
+  
+  /* Common Colors */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #10b981;
+  --color-background: #ffffff;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
   
   /* Common Spacing */
   --spacing-xs: 0.25rem;
