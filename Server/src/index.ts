@@ -7,6 +7,7 @@ import { errorHandler } from './middleware/errorHandler';
 // Import routes
 import authRoutes from './routes/auth';
 import eventRoutes from './routes/events';
+import aboutRoutes from './routes/about';
 
 // Load environment variables
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(express.json());
 // Define routes
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
+app.use('/api/about', aboutRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {
