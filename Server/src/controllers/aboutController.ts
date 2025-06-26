@@ -43,32 +43,20 @@ export class AboutController {
         leadership
       } = req.body;
 
-      // Validate required fields
-      if (!mission || !vision || !values || !history) {
-        res.status(400).json({
-          success: false,
-          message: 'Mission, vision, values, and history are required'
-        });
-        return;
-      }
-
-      // Find existing about document or create new one
+      // Find existing about document
       let about = await About.findOne();
       
-      if (about) {
-        // Update existing document
-        about.mission = mission;
-        about.vision = vision;
-        about.values = values;
-        about.history = history;
-        about.stats = stats || about.stats;
-        about.achievements = achievements || about.achievements;
-        about.leadership = leadership || about.leadership;
-        about.updatedAt = new Date();
-        
-        await about.save();
-      } else {
-        // Create new document
+      if (!about) {
+        // If no document exists and we're doing a partial update, return error
+        if (!mission || !vision || !values || !history) {
+          res.status(400).json({
+            success: false,
+            message: 'Cannot perform partial update. No about document exists. Please provide all required fields: mission, vision, values, and history.'
+          });
+          return;
+        }
+
+        // Create new document with all required fields
         about = new About({
           mission,
           vision,
@@ -83,9 +71,19 @@ export class AboutController {
           achievements: achievements || [],
           leadership: leadership || []
         });
-        
-        await about.save();
+      } else {
+        // Update existing document (partial updates allowed)
+        if (mission !== undefined) about.mission = mission;
+        if (vision !== undefined) about.vision = vision;
+        if (values !== undefined) about.values = values;
+        if (history !== undefined) about.history = history;
+        if (stats !== undefined) about.stats = stats;
+        if (achievements !== undefined) about.achievements = achievements;
+        if (leadership !== undefined) about.leadership = leadership;
+        about.updatedAt = new Date();
       }
+      
+      await about.save();
 
       res.status(200).json({
         success: true,
