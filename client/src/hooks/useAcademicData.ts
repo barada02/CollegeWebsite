@@ -79,9 +79,44 @@ export const useDepartmentWithFaculty = (id: string) => {
   return useAsyncData(() => departmentsApi.getWithFaculty(id), [id]);
 };
 
-// Courses hooks
+// Courses hooks - special handling for paginated response
 export const useCourses = () => {
-  return useAsyncData(() => coursesApi.getAll());
+  const [data, setData] = useState<Course[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await coursesApi.getAll();
+        // Extract courses from nested structure: response.data.data.courses
+        setData((response.data as any).data.courses);
+      } catch (err) {
+        setError(apiUtils.handleError(err));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const refetch = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await coursesApi.getAll();
+      setData((response.data as any).data.courses);
+    } catch (err) {
+      setError(apiUtils.handleError(err));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { data, loading, error, refetch };
 };
 
 export const useCourse = (id: string) => {
