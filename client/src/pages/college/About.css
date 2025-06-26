@@ -95,31 +95,244 @@
   opacity: 0.9;
 }
 
-/* Responsive Design */
+/* Loading and Error States */
+.loading-state, .error-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border, #e5e7eb);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 0 1rem 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-state p, .error-state p {
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.error-state h2 {
+  color: var(--color-error, #ef4444);
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+/* Section Content */
+.section-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-content h2 {
+  font-size: 2.5rem;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0 0 3rem 0;
+  font-weight: 700;
+}
+
+/* History Section */
+.about-history {
+  padding: 4rem 0;
+  background: var(--color-background, #f9fafb);
+}
+
+.history-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Achievements Section */
+.about-achievements {
+  padding: 4rem 0;
+}
+
+.achievements-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateY(-2px);
+}
+
+.achievement-year {
+  background: var(--color-primary);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-width: 80px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-content h3 {
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.achievement-content p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Leadership Section */
+.about-leadership {
+  padding: 4rem 0;
+  background: var(--color-background, #f9fafb);
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.leader-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-4px);
+}
+
+.leader-info h3 {
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.leader-info h4 {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.leader-info p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.leader-contact {
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+}
+
+.leader-contact a {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.leader-contact a:hover {
+  background: var(--color-primary-dark, #1d4ed8);
+}
+
+/* Responsive Design Updates */
 @media (max-width: 768px) {
-  .page-title {
-    font-size: 2.5rem;
+  .section-content h2 {
+    font-size: 2rem;
   }
-  
-  .overview-grid {
+
+  .achievement-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .achievement-year {
+    align-self: center;
+  }
+
+  .leadership-grid {
     grid-template-columns: 1fr;
   }
-  
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+  .about-history, .about-achievements, .about-leadership {
+    padding: 3rem 0;
   }
 }
 
 @media (max-width: 480px) {
-  .about-hero {
-    padding: 2rem 0;
+  .section-content {
+    padding: 0 0.5rem;
   }
-  
-  .page-title {
-    font-size: 2rem;
+
+  .section-content h2 {
+    font-size: 1.8rem;
   }
-  
-  .stats-grid {
-    grid-template-columns: 1fr;
+
+  .overview-card, .leader-card, .achievement-item {
+    padding: 1.5rem;
+  }
+
+  .history-text {
+    font-size: 1.1rem;
+  }
+
+  .achievement-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .achievement-content p {
+    font-size: 1rem;
   }
 }

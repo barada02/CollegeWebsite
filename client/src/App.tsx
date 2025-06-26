@@ -9,6 +9,7 @@ import Contact from './pages/college/Contact'
 import Login from './pages/admin/Login'
 import Dashboard from './pages/admin/Dashboard'
 import ManageAbout from './pages/admin/ManageAbout'
+import ManageContacts from './pages/admin/ManageContacts'
 import ManageEvents from './pages/admin/ManageEvents'
 import ManageFaculty from './pages/admin/ManageFaculty'
 import './App.css'
@@ -33,6 +34,7 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="about" element={<ManageAbout />} />
+          <Route path="contacts" element={<ManageContacts />} />
           <Route path="events" element={<ManageEvents />} />
           <Route path="faculty" element={<ManageFaculty />} />
         </Route>

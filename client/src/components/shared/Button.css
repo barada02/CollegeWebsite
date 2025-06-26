@@ -6,54 +6,61 @@
 .btn-college {
   background-color: var(--college-primary);
   color: white;
-  border: 1px solid var(--college-primary);
+  border: 2px solid var(--college-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
 }
 
 .btn-college:hover:not(:disabled) {
   background-color: #1d4ed8;
   border-color: #1d4ed8;
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
 }
 
 .btn-college:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
 }
 
 /* Admin button variant */
 .btn-admin {
   background-color: var(--admin-primary);
   color: white;
-  border: 1px solid var(--admin-primary);
+  border: 2px solid var(--admin-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(55, 65, 81, 0.2);
 }
 
 .btn-admin:hover:not(:disabled) {
   background-color: #111827;
   border-color: #111827;
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 8px rgba(55, 65, 81, 0.3);
 }
 
 .btn-admin:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 4px rgba(55, 65, 81, 0.2);
 }
 
 /* Button sizes */
 .btn-sm {
   padding: var(--spacing-xs) var(--spacing-md);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .btn-md {
   padding: var(--spacing-sm) var(--spacing-lg);
   font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .btn-lg {
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: 1rem;
+  font-weight: 600;
 }
 
 /* Disabled state */
