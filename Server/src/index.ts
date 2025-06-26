@@ -9,6 +9,10 @@ import authRoutes from './routes/auth';
 import eventRoutes from './routes/events';
 import aboutRoutes from './routes/about';
 import contactRoutes from './routes/contact';
+import schoolRoutes from './routes/schools';
+import departmentRoutes from './routes/departments';
+import courseRoutes from './routes/courses';
+import facultyRoutes from './routes/faculty';
 
 // Load environment variables
 dotenv.config();
@@ -29,6 +33,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/about', aboutRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/schools', schoolRoutes);
+app.use('/api/departments', departmentRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/faculty', facultyRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {
