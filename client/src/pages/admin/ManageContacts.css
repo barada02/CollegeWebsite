@@ -1,42 +1,42 @@
 /* Manage Contacts Page Styles */
 .manage-contacts {
-  padding: var(--spacing-lg);
+  padding: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .page-header {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: 2rem;
   text-align: center;
 }
 
 .page-header h1 {
-  color: var(--admin-text);
+  color: #111827;
   font-size: 2rem;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0.5rem;
 }
 
 .page-header p {
-  color: var(--admin-text-light);
+  color: #6b7280;
   font-size: 1rem;
 }
 
 /* Status Summary */
 .status-summary {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: 2rem;
 }
 
 .summary-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--spacing-md);
+  gap: 1rem;
 }
 
 .summary-card {
-  background: var(--admin-card-background);
-  border: 2px solid var(--admin-border);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+  background: #ffffff;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -44,20 +44,20 @@
 
 .summary-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--admin-primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  border-color: #374151;
 }
 
 .summary-card.active {
-  border-color: var(--admin-primary);
-  background: var(--admin-primary-light);
-  box-shadow: var(--shadow-md);
+  border-color: #374151;
+  background: #f3f4f6;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
 .summary-card h3 {
   font-size: 0.875rem;
-  color: var(--admin-text-light);
-  margin: 0 0 var(--spacing-xs) 0;
+  color: #6b7280;
+  margin: 0 0 0.25rem 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -65,7 +65,7 @@
 .summary-card p {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--admin-text);
+  color: #111827;
   margin: 0;
 }
 
@@ -286,35 +286,42 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: var(--spacing-md);
+  z-index: 9999;
+  padding: 1rem;
+  backdrop-filter: blur(2px);
 }
 
 .modal-content {
-  background: var(--admin-card-background);
-  border-radius: var(--radius-lg);
+  background: #ffffff;
+  border-radius: 0.75rem;
   max-width: 600px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid #e5e7eb;
+  position: relative;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-lg);
-  border-bottom: 1px solid var(--admin-border);
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .modal-header h2 {
-  color: var(--admin-text);
+  color: #111827;
   margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .close-button {
@@ -322,114 +329,147 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--admin-text-light);
-  padding: var(--spacing-xs);
+  color: #6b7280;
+  padding: 0.25rem;
   line-height: 1;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: all 0.2s ease;
 }
 
 .close-button:hover {
-  color: var(--admin-text);
+  color: #111827;
+  background: #e5e7eb;
 }
 
 .modal-body {
-  padding: var(--spacing-lg);
+  padding: 1.5rem;
 }
 
 /* Contact Info */
 .contact-info {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 1.5rem;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
 }
 
 .info-row {
   display: flex;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0.75rem;
   align-items: flex-start;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
 }
 
 .info-row label {
   font-weight: 600;
-  color: var(--admin-text);
+  color: #374151;
   min-width: 100px;
-  margin-right: var(--spacing-sm);
+  margin-right: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .info-row span {
-  color: var(--admin-text);
+  color: #111827;
   flex: 1;
+  font-size: 0.875rem;
 }
 
 /* Message Section */
 .message-section {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 1.5rem;
 }
 
 .message-section label {
   display: block;
   font-weight: 600;
-  color: var(--admin-text);
-  margin-bottom: var(--spacing-sm);
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
 }
 
 .message-content {
-  background: var(--admin-background);
-  border: 1px solid var(--admin-border);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
-  color: var(--admin-text);
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: #111827;
   line-height: 1.6;
   white-space: pre-wrap;
+  font-size: 0.875rem;
+  min-height: 100px;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 /* Admin Section */
 .admin-section {
-  border-top: 1px solid var(--admin-border);
-  padding-top: var(--spacing-lg);
+  border-top: 2px solid #e5e7eb;
+  padding-top: 1.5rem;
+  background: #f9fafb;
+  margin: 0 -1.5rem -1.5rem -1.5rem;
+  padding: 1.5rem;
+  border-radius: 0 0 0.75rem 0.75rem;
 }
 
 .status-update {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 1.5rem;
 }
 
 .status-update label {
   display: block;
   font-weight: 600;
-  color: var(--admin-text);
-  margin-bottom: var(--spacing-sm);
+  color: #374151;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .status-buttons {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .admin-notes label {
   display: block;
   font-weight: 600;
-  color: var(--admin-text);
-  margin-bottom: var(--spacing-sm);
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
 }
 
 .admin-notes textarea {
   width: 100%;
-  padding: var(--spacing-sm);
-  border: 2px solid var(--admin-border);
-  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
   font-family: inherit;
   font-size: 0.875rem;
   resize: vertical;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0.75rem;
+  background: #ffffff;
+  color: #111827;
+  min-height: 80px;
+  transition: border-color 0.2s ease;
 }
 
 .admin-notes textarea:focus {
   outline: none;
-  border-color: var(--admin-primary);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .manage-contacts {
-    padding: var(--spacing-md);
+    padding: 1rem;
   }
   
   .summary-cards {
@@ -448,9 +488,25 @@
     flex-direction: column;
   }
   
+  .modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
   .modal-content {
-    margin: var(--spacing-sm);
+    margin: 0;
     max-width: none;
+    width: calc(100% - 1rem);
+    max-height: calc(100vh - 4rem);
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
   }
   
   .status-buttons {
@@ -459,12 +515,17 @@
   
   .info-row {
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: 0.25rem;
   }
   
   .info-row label {
     min-width: auto;
     margin-right: 0;
+  }
+  
+  .admin-section {
+    margin: 0 -1rem -1rem -1rem;
+    padding: 1rem;
   }
 }
 
@@ -479,5 +540,15 @@
   
   .status-buttons {
     grid-template-columns: 1fr;
+  }
+  
+  .modal-overlay {
+    padding: 0.25rem;
+    padding-top: 1rem;
+  }
+  
+  .modal-content {
+    width: calc(100% - 0.5rem);
+    max-height: calc(100vh - 2rem);
   }
 }
