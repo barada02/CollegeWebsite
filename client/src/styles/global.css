@@ -19,9 +19,11 @@
   --admin-accent: #8b5cf6;
   --admin-background: #f9fafb;
   --admin-surface: #ffffff;
+  --admin-card-background: #ffffff;
   --admin-text: #111827;
   --admin-text-light: #6b7280;
   --admin-border: #d1d5db;
+  --admin-hover: #f3f4f6;
   
   /* Common Colors */
   --color-primary: #2563eb;
