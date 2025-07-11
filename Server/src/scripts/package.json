@@ -1,0 +1,20 @@
+{
+  "name": "seed-academic-data",
+  "version": "1.0.0",
+  "description": "Seed academic data for Excellence University",
+  "main": "dist/scripts/seedAcademicData.js",
+  "scripts": {
+    "seed": "ts-node src/scripts/seedAcademicData.ts",
+    "seed:build": "npm run build && node dist/scripts/seedAcademicData.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "mongoose": "^8.15.1",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^22.15.29"
+  }
+}
