@@ -11,7 +11,10 @@ export class SchoolController {
       // Build query
       const query: any = {};
       if (status && typeof status === 'string') {
-        query.status = status;
+        if (status !== 'all') {
+          query.status = status;
+        }
+        // If status is 'all', don't add status filter to get all schools
       } else {
         // Default to active schools for public view
         query.status = 'active';
