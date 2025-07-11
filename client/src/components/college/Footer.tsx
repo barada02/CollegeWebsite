@@ -52,8 +52,8 @@ export const CollegeFooter: React.FC = () => {
           <div className="footer-section">
             <h4 className="section-title">Contact Info</h4>
             <div className="contact-info">
-              <p>📍 123 University Avenue<br />Education City, EC 12345</p>
-              <p>📞 +1 (555) 123-4567</p>
+              <p>📍 123 University Avenue<br />Hyderabad, Telangana, India</p>
+              <p>📞 +191 9100000256</p>
               <p>✉️ info@excellenceuniversity.edu</p>
             </div>
             <div className="social-links">

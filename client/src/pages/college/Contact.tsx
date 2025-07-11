@@ -116,14 +116,14 @@ export const Contact: React.FC = () => {
                 <div className="contact-icon">📍</div>
                 <div>
                   <h3>Address</h3>
-                  <p>123 University Ave<br />Education City, EC 12345</p>
+                  <p>123 University Ave<br />Hyderabad, Telangana, India</p>
                 </div>
               </div>
               <div className="contact-item">
                 <div className="contact-icon">📞</div>
                 <div>
                   <h3>Phone</h3>
-                  <p>+1 (555) 123-4567</p>
+                  <p>+91 900000256</p>
                 </div>
               </div>
               <div className="contact-item">
