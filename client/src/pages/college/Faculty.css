@@ -1,0 +1,367 @@
+/* Faculty Page Styles */
+.faculty-page {
+  min-height: 100vh;
+  background: var(--college-bg);
+  padding: 2rem 0;
+}
+
+.faculty-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--college-primary);
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Search and Filter Section */
+.faculty-filters {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--college-primary);
+}
+
+.filter-section {
+  min-width: 200px;
+}
+
+.department-filter {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.department-filter:focus {
+  outline: none;
+  border-color: var(--college-primary);
+}
+
+/* Department Section */
+.department-section {
+  margin-bottom: 4rem;
+}
+
+.department-header {
+  background: linear-gradient(135deg, var(--college-primary), var(--college-secondary));
+  color: white;
+  padding: 2rem;
+  border-radius: 12px 12px 0 0;
+  text-align: center;
+}
+
+.department-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.school-name {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.faculty-count {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Faculty Grid */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Faculty Card */
+.faculty-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.faculty-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--college-primary);
+}
+
+.faculty-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--college-primary);
+}
+
+.faculty-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--college-primary), var(--college-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+.faculty-info {
+  text-align: center;
+}
+
+.faculty-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.faculty-designation {
+  font-size: 1rem;
+  color: var(--college-primary);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+/* Faculty Details */
+.faculty-details {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.detail-section {
+  margin-bottom: 1rem;
+}
+
+.detail-section h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-section p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Faculty Contact */
+.faculty-contact {
+  text-align: left;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.contact-label {
+  font-weight: 500;
+  color: var(--text-primary);
+  min-width: 60px;
+  margin-right: 0.5rem;
+}
+
+.contact-link {
+  color: var(--college-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--college-secondary);
+  text-decoration: underline;
+}
+
+.contact-value {
+  color: var(--text-secondary);
+}
+
+/* Faculty Actions */
+.faculty-actions {
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1rem;
+}
+
+.cv-link {
+  display: inline-block;
+  background: var(--college-primary);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.cv-link:hover {
+  background: var(--college-secondary);
+  transform: translateY(-2px);
+}
+
+/* No Faculty Message */
+.no-faculty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.no-faculty h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.no-faculty p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faculty-page {
+    padding: 1rem 0;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .faculty-filters {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .search-section,
+  .filter-section {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .faculty-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .faculty-card {
+    padding: 1rem;
+  }
+
+  .department-header {
+    padding: 1.5rem;
+  }
+
+  .department-name {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .faculty-filters {
+    padding: 1rem;
+  }
+
+  .faculty-grid {
+    padding: 1rem;
+  }
+}

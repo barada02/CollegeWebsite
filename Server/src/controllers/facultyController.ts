@@ -32,7 +32,10 @@ export class FacultyController {
         query.designation = designation;
       }
       if (status && typeof status === 'string') {
-        query.status = status;
+        if (status !== 'all') {
+          query.status = status;
+        }
+        // If status is 'all', don't add status filter to get all faculty
       } else {
         // Default to active faculty for public view
         query.status = 'active';
