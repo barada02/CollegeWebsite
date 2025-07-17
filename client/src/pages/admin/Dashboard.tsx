@@ -84,28 +84,28 @@ export const Dashboard: React.FC = () => {
         {/* Quick Stats */}
         <div className="stats-grid">
           <div className="stat-card">
-            <div className="stat-icon">�</div>
+            <div className="stat-icon">@</div>
             <div className="stat-content">
               <div className="stat-number">{stats.totalContacts}</div>
               <div className="stat-label">Total Contact Inquiries</div>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon">�</div>
+            <div className="stat-icon">★</div>
             <div className="stat-content">
               <div className="stat-number">{stats.totalEvents}</div>
               <div className="stat-label">Total Events</div>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon">�‍🏫</div>
+            <div className="stat-icon">♦</div>
             <div className="stat-content">
               <div className="stat-number">{stats.totalFaculty}</div>
               <div className="stat-label">Faculty Members</div>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon">🆕</div>
+            <div className="stat-icon">NEW</div>
             <div className="stat-content">
               <div className="stat-number">{stats.contactsByStatus.new}</div>
               <div className="stat-label">New Contact Leads</div>
