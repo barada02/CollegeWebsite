@@ -12,8 +12,6 @@ export const AdminSidebar: React.FC = () => {
     { path: '/admin/leads', label: 'Student Leads', icon: '🎯' },
     { path: '/admin/events', label: 'Events', icon: '📅' },
     { path: '/admin/faculty', label: 'Faculty', icon: '👨‍🏫' },
-    { path: '/admin/students', label: 'Students', icon: '👥' },
-    { path: '/admin/settings', label: 'Settings', icon: '⚙️' },
   ];
 
   return (
