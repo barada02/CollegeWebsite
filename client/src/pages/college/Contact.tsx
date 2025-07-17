@@ -130,7 +130,7 @@ export const Contact: React.FC = () => {
                 <div className="contact-icon">✉️</div>
                 <div>
                   <h3>Email</h3>
-                  <p>info@excellenceuniversity.edu</p>
+                  <p>info@aurorauni.edu</p>
                 </div>
               </div>
               <div className="contact-item">

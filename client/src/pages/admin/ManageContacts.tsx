@@ -21,6 +21,7 @@ export const ManageContacts: React.FC = () => {
   const [statusSummary, setStatusSummary] = useState<{ [key: string]: number }>({});
   const [adminNotes, setAdminNotes] = useState('');
   const [updating, setUpdating] = useState(false);
+  const [sendingReply, setSendingReply] = useState(false);
 
   // Load contacts
   const loadContacts = async (page = 1, status?: string, search?: string) => {
@@ -113,6 +114,45 @@ export const ManageContacts: React.FC = () => {
       console.error('Error updating contact status:', err);
     } finally {
       setUpdating(false);
+    }
+  };
+
+  // Send reply to contact
+  const handleSendReply = async (contactId: string, replyMessage: string) => {
+    if (!replyMessage.trim()) {
+      setError('Reply message cannot be empty');
+      return;
+    }
+
+    if (replyMessage.trim().length < 10) {
+      setError('Reply message must be at least 10 characters long');
+      return;
+    }
+
+    try {
+      setSendingReply(true);
+      setError(null);
+      
+      const response = await ContactApiService.replyToContact(contactId, replyMessage.trim());
+
+      if (response.success && response.data) {
+        // Update selected contact
+        setSelectedContact(response.data);
+        setAdminNotes(response.data.adminNotes || '');
+        
+        // Reload contacts to update the list
+        loadContacts(currentPage, statusFilter, searchTerm);
+        
+        // Show success message
+        alert('Reply sent successfully! The contact has been updated to "replied" status.');
+      } else {
+        setError(response.message || 'Failed to send reply');
+      }
+    } catch (err) {
+      setError('Error sending reply. Please try again.');
+      console.error('Error sending reply:', err);
+    } finally {
+      setSendingReply(false);
     }
   };
 
@@ -436,22 +476,62 @@ export const ManageContacts: React.FC = () => {
                 </div>
 
                 <div className="admin-notes">
-                  <label htmlFor="adminNotes">Admin Notes:</label>
+                  <label htmlFor="adminNotes">
+                    {selectedContact.status === 'replied' ? 'Previous Reply:' : 'Reply Message:'}
+                  </label>
                   <textarea
                     id="adminNotes"
                     value={adminNotes}
                     onChange={(e) => setAdminNotes(e.target.value)}
-                    placeholder="Add internal notes about this contact..."
-                    rows={4}
+                    placeholder={selectedContact.status === 'replied' 
+                      ? "This contact has already been replied to. You can add additional notes here..." 
+                      : "Type your reply message here. This will be sent via email to the contact person..."
+                    }
+                    rows={6}
+                    disabled={sendingReply}
                   />
-                  <Button
-                    variant="admin"
-                    size="sm"
-                    onClick={() => handleStatusUpdate(selectedContact._id!, selectedContact.status)}
-                    disabled={updating}
-                  >
-                    {updating ? 'Updating...' : 'Save Notes'}
-                  </Button>
+                  <div className="admin-notes-actions">
+                    {selectedContact.status !== 'replied' ? (
+                      <Button
+                        variant="admin"
+                        size="md"
+                        onClick={() => handleSendReply(selectedContact._id!, adminNotes)}
+                        disabled={updating || sendingReply || !adminNotes.trim()}
+                        className="reply-button"
+                      >
+                        {sendingReply ? 'Sending Reply...' : '📧 Reply and Save'}
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="admin"
+                        size="sm"
+                        onClick={() => handleStatusUpdate(selectedContact._id!, selectedContact.status)}
+                        disabled={updating}
+                      >
+                        {updating ? 'Updating...' : 'Save Notes'}
+                      </Button>
+                    )}
+                    
+                    {selectedContact.status !== 'replied' && (
+                      <Button
+                        variant="college"
+                        size="sm"
+                        onClick={() => handleStatusUpdate(selectedContact._id!, selectedContact.status)}
+                        disabled={updating || sendingReply}
+                        className="save-only-button"
+                      >
+                        {updating ? 'Saving...' : 'Save as Notes Only'}
+                      </Button>
+                    )}
+                  </div>
+                  
+                  {selectedContact.status === 'replied' && selectedContact.repliedAt && (
+                    <div className="reply-info">
+                      <small className="reply-timestamp">
+                        ✅ Reply sent on {formatDate(selectedContact.repliedAt)}
+                      </small>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

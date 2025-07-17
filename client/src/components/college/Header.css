@@ -1,8 +1,8 @@
-/* College Header Styles */
+/* Aurora University Header Styles - Premium Maroon Theme */
 .college-header {
-  background-color: var(--college-background);
-  border-bottom: 2px solid var(--college-border);
-  box-shadow: var(--shadow-sm);
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(128, 0, 32, 0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -33,17 +33,21 @@
 .logo-placeholder {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--college-primary), var(--college-secondary));
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.logo-text {
-  color: white;
-  font-size: 1.5rem;
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(1.1);
 }
 
 .college-info {
@@ -54,14 +58,15 @@
 .college-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--college-text, #1f2937);
+  color: #ffffff;
   margin: 0;
   line-height: 1.2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .college-tagline {
   font-size: 0.875rem;
-  color: var(--college-text-light, #6b7280);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
   line-height: 1.2;
 }
@@ -86,27 +91,28 @@
 
 .nav-link {
   text-decoration: none;
-  color: var(--college-text, #1f2937) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
   font-weight: 600;
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   position: relative;
-  border: 1px solid transparent;
-  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   font-size: 0.95rem;
   min-height: 36px;
   display: flex;
   align-items: center;
   white-space: nowrap;
+  backdrop-filter: blur(10px);
 }
 
 .nav-link:hover {
-  color: var(--college-primary, #2563eb) !important;
-  background-color: rgba(37, 99, 235, 0.1) !important;
-  border-color: rgba(37, 99, 235, 0.2) !important;
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nav-link.active {

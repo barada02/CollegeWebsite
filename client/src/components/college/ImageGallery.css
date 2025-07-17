@@ -1,0 +1,245 @@
+/* Premium Aurora University Image Gallery - Maroon & White Theme */
+.image-gallery {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(128, 0, 32, 0.15);
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+}
+
+.gallery-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(128, 0, 32, 0.8) 0%,
+    rgba(128, 0, 32, 0.6) 30%,
+    rgba(0, 0, 0, 0.4) 70%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 60px;
+  z-index: 3;
+}
+
+.slide-content {
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  max-width: 600px;
+}
+
+.slide-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.slide-subtitle {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+  color: #f8f8f8;
+}
+
+/* Navigation Arrows */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(128, 0, 32, 0.9);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-nav:hover {
+  background: rgba(128, 0, 32, 1);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(128, 0, 32, 0.4);
+}
+
+.gallery-nav-prev {
+  left: 30px;
+}
+
+.gallery-nav-next {
+  right: 30px;
+}
+
+/* Dots Indicator */
+.gallery-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.gallery-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+.gallery-dot.active {
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Placeholder */
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slide-overlay {
+    padding: 20px 30px;
+  }
+  
+  .slide-title {
+    font-size: 2.5rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .gallery-nav {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .gallery-nav-prev {
+    left: 20px;
+  }
+  
+  .gallery-nav-next {
+    right: 20px;
+  }
+  
+  .gallery-dots {
+    bottom: 20px;
+    gap: 8px;
+  }
+  
+  .gallery-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-overlay {
+    padding: 15px 20px;
+  }
+  
+  .slide-title {
+    font-size: 2rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.gallery-slide.active .slide-content {
+  animation: fadeInSlide 1s ease-out;
+}

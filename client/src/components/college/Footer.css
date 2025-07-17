@@ -1,20 +1,28 @@
-/* College Footer Styles */
+/* Aurora University Footer Styles - Premium Maroon Theme */
 .college-footer {
-  background-color: var(--college-text);
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
   color: white;
   margin-top: auto;
+  border-top: 3px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-xl);
   padding: var(--spacing-2xl) 0;
+}
+
+.footer-section {
+  color: #ffffff !important;
 }
 
 .footer-section h3,
 .footer-section h4 {
   margin-bottom: var(--spacing-md);
+  color: #ffffff !important;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Footer Logo */
@@ -26,18 +34,23 @@
 }
 
 .footer-logo .logo-placeholder {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--college-primary), var(--college-secondary));
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.footer-logo .logo-text {
-  color: white;
+.footer-logo .logo-image {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  filter: brightness(1.1);
 }
 
 .footer-title {
@@ -45,27 +58,31 @@
   font-weight: 700;
   margin: 0;
   line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .footer-subtitle {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
   line-height: 1.2;
 }
 
 .footer-description {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   margin: 0;
+  font-size: 0.95rem;
 }
 
 /* Section Titles */
 .section-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
   margin-bottom: var(--spacing-md);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Footer Links */
@@ -80,13 +97,17 @@
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-block;
 }
 
 .footer-links a:hover {
-  color: var(--college-secondary);
+  color: #ffffff;
+  transform: translateX(3px);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Contact Info */
@@ -97,6 +118,33 @@
 
 .contact-info p {
   margin-bottom: var(--spacing-sm);
+}
+
+/* Contact Information Styling */
+.contact-info {
+  margin-top: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-info p {
+  margin-bottom: var(--spacing-md);
+  color: #ffffff !important;
+  font-weight: 500;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: 0.95rem;
+}
+
+.contact-info strong {
+  color: #ffffff !important;
+  font-weight: 700;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
 }
 
 /* Social Links */
@@ -112,16 +160,19 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-lg);
   text-decoration: none;
   font-size: 1.25rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .social-link:hover {
-  background-color: var(--college-primary);
+  background-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Footer Bottom */

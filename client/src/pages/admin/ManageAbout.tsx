@@ -423,7 +423,7 @@ export const ManageAbout: React.FC = () => {
                 />
               </div>
               <div className="stat-edit-item">
-                <label>Years of Excellence</label>
+                <label>Years of Service</label>
                 <input
                   type="number"
                   value={editingStats.yearsOfExcellence}
@@ -455,7 +455,7 @@ export const ManageAbout: React.FC = () => {
               <span className="stat-value">{aboutData?.stats.programs}</span>
             </div>
             <div className="stat-item">
-              <label>Years of Excellence</label>
+              <label>Years of Service</label>
               <span className="stat-value">{aboutData?.stats.yearsOfExcellence}</span>
             </div>
           </div>

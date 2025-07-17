@@ -13,6 +13,7 @@ import ManageAbout from './pages/admin/ManageAbout'
 import ManageContacts from './pages/admin/ManageContacts'
 import ManageEvents from './pages/admin/ManageEvents'
 import ManageFaculty from './pages/admin/ManageFaculty'
+import { ManageStudentLeads } from './pages/admin/ManageStudentLeads'
 import './App.css'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="about" element={<ManageAbout />} />
           <Route path="contacts" element={<ManageContacts />} />
+          <Route path="leads" element={<ManageStudentLeads />} />
           <Route path="events" element={<ManageEvents />} />
           <Route path="faculty" element={<ManageFaculty />} />
         </Route>

@@ -1,38 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/shared/Button';
+import ImageGallery from '../../components/college/ImageGallery';
 import './Home.css';
 
 export const Home: React.FC = () => {
+  // College images for the gallery
+  const collegeImages = [
+    '/src/assets/college/college_Building.jpg',
+    '/src/assets/college/college_b1.jpg',
+    '/src/assets/college/magazine.jpg',
+    '/src/assets/college/vc.jpg'
+  ];
+
   return (
     <div className="home-page">
-      {/* Hero Section */}
+      {/* Hero Section with Image Gallery */}
       <section className="hero-section">
+        <div className="hero-gallery-container">
+          <ImageGallery 
+            images={collegeImages}
+            autoSlide={true}
+            autoSlideInterval={5000}
+            height="600px"
+          />
+        </div>
+      </section>
+
+      {/* Welcome Section */}
+      <section className="welcome-section">
         <div className="container">
-          <div className="hero-content">
-            <div className="hero-text">
-              <h1 className="hero-title">
-                Welcome to <span className="highlight">Excellence University</span>
-              </h1>
-              <p className="hero-description">
-                Discover your potential, shape your future, and join a community 
-                of innovators, leaders, and changemakers. Excellence University 
-                offers world-class education in a vibrant, inclusive environment.
-              </p>
-              <div className="hero-actions">
-                <Link to="/admissions">
-                  <Button variant="college" size="lg">Apply Now</Button>
-                </Link>
-                <Link to="/about">
-                  <Button variant="college" size="lg">Learn More</Button>
-                </Link>
-              </div>
-            </div>
-            <div className="hero-image">
-              <div className="hero-placeholder">
-                <span className="hero-icon">🎓</span>
-                <p>Campus Image</p>
-              </div>
+          <div className="welcome-content">
+            <h1 className="welcome-title">
+              Welcome to <span className="highlight">Aurora University</span>
+            </h1>
+            <p className="welcome-description">
+              Discover your potential, shape your future, and join a community 
+              of innovators, leaders, and changemakers. Aurora University 
+              offers world-class education in a vibrant, inclusive environment.
+            </p>
+            <div className="welcome-actions">
+              <Link to="/admissions">
+                <Button variant="college" size="lg">Apply Now</Button>
+              </Link>
+              <Link to="/about">
+                <Button variant="college" size="lg">Learn More</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -66,7 +79,7 @@ export const Home: React.FC = () => {
       <section className="features-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose Excellence University?</h2>
+            <h2 className="section-title">Why Choose Aurora University?</h2>
             <p className="section-description">
               Discover what makes us a leading institution in higher education
             </p>
@@ -74,7 +87,7 @@ export const Home: React.FC = () => {
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">🏆</div>
-              <h3 className="feature-title">Academic Excellence</h3>
+              <h3 className="feature-title">Academic Aurora</h3>
               <p className="feature-description">
                 Top-ranked programs with world-class faculty and cutting-edge research opportunities.
               </p>

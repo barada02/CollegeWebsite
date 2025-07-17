@@ -12,10 +12,10 @@ export const CollegeHeader: React.FC = () => {
           <div className="logo-section">
             <Link to="/" className="logo-link">
               <div className="logo-placeholder">
-                <span className="logo-text">📚</span>
+                <img src="/src/assets/white-logo.png" alt="Aurora University Logo" className="logo-image" />
               </div>
               <div className="college-info">
-                <h1 className="college-name">Excellence University</h1>
+                <h1 className="college-name">Aurora University</h1>
                 <p className="college-tagline">Building Tomorrow's Leaders</p>
               </div>
             </Link>
