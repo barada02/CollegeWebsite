@@ -223,73 +223,154 @@
 
 /* Leadership Section */
 .about-leadership {
-  padding: 4rem 0;
-  background: var(--color-background, #f9fafb);
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-leadership::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(128,0,32,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.6;
+}
+
+.about-leadership .section-content {
+  position: relative;
+  z-index: 1;
+}
+
+.about-leadership h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #800020;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .leadership-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .leader-card {
   background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(128, 0, 32, 0.05);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 1px solid rgba(128, 0, 32, 0.1);
+  overflow: hidden;
+}
+
+.leader-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #800020 0%, #600018 50%, #800020 100%);
 }
 
 .leader-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(128, 0, 32, 0.1);
+}
+
+.leader-info {
+  position: relative;
+  z-index: 1;
 }
 
 .leader-info h3 {
-  font-size: 1.4rem;
-  color: var(--color-text-primary);
+  font-size: 1.6rem;
+  color: #1a1a1a;
   margin: 0 0 0.5rem 0;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .leader-info h4 {
-  font-size: 1.1rem;
-  color: var(--color-primary);
-  margin: 0 0 1rem 0;
-  font-weight: 500;
+  font-size: 1.2rem;
+  color: #800020;
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
 }
 
 .leader-info p {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin: 0 0 1.5rem 0;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 2rem 0;
+  font-size: 1rem;
+  text-align: left;
 }
 
 .leader-contact {
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border, #e5e7eb);
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(128, 0, 32, 0.1);
 }
 
 .leader-contact a {
-  display: inline-block;
-  background: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #800020 0%, #600018 100%);
   color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
   text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leader-contact a::after {
+  content: '→';
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
 }
 
 .leader-contact a:hover {
-  background: var(--color-primary-dark, #1d4ed8);
+  background: linear-gradient(135deg, #600018 0%, #400010 100%);
+  box-shadow: 0 6px 16px rgba(128, 0, 32, 0.4);
+  transform: translateY(-2px);
+}
+
+.leader-contact a:hover::after {
+  transform: translateX(4px);
 }
 
 /* Responsive Design Updates */
 @media (max-width: 768px) {
   .section-content h2 {
     font-size: 2rem;
+  }
+
+  .about-leadership h2 {
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
   }
 
   .achievement-item {
@@ -304,6 +385,20 @@
 
   .leadership-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .leader-card {
+    padding: 2rem;
+  }
+
+  .leader-info h3 {
+    font-size: 1.4rem;
+  }
+
+  .leader-info h4 {
+    font-size: 1rem;
   }
 
   .about-history, .about-achievements, .about-leadership {
@@ -320,8 +415,37 @@
     font-size: 1.8rem;
   }
 
+  .about-leadership h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
   .overview-card, .leader-card, .achievement-item {
     padding: 1.5rem;
+  }
+
+  .leader-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .leader-info h4 {
+    font-size: 0.9rem;
+  }
+
+  .leader-info p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .leader-contact a {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
   }
 
   .history-text {
