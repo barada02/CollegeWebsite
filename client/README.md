@@ -1,4 +1,137 @@
-# React + TypeScript + Vite
+# Aurora University College Website - Frontend
+
+This is the frontend application for Aurora University's college website, built with React + TypeScript + Vite.
+
+## Project Structure
+
+```
+client/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── academic/
+│   │   │   ├── CourseCard.css
+│   │   │   ├── CourseCard.tsx
+│   │   │   ├── SchoolCard.css
+│   │   │   └── SchoolCard.tsx
+│   │   ├── admin/
+│   │   │   ├── AdminHeader.css
+│   │   │   ├── AdminHeader.tsx
+│   │   │   ├── AdminSidebar.css
+│   │   │   └── AdminSidebar.tsx
+│   │   ├── college/
+│   │   │   ├── Footer.css
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.css
+│   │   │   └── Header.tsx
+│   │   └── shared/
+│   │       ├── Button.css
+│   │       ├── Button.tsx
+│   │       ├── ErrorMessage.css
+│   │       ├── ErrorMessage.tsx
+│   │       ├── LoadingSpinner.css
+│   │       └── LoadingSpinner.tsx
+│   ├── hooks/
+│   │   ├── useAboutData.ts
+│   │   ├── useAcademicData.ts
+│   │   ├── useContactForm.ts
+│   │   └── useContactsManagement.ts
+│   ├── layouts/
+│   │   ├── AdminLayout.css
+│   │   ├── AdminLayout.tsx
+│   │   ├── CollegeLayout.css
+│   │   └── CollegeLayout.tsx
+│   ├── pages/
+│   │   ├── admin/
+│   │   │   ├── Dashboard.css
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── Login.css
+│   │   │   ├── Login.tsx
+│   │   │   ├── ManageAbout.css
+│   │   │   ├── ManageAbout.tsx
+│   │   │   ├── ManageContacts.css
+│   │   │   └── ManageContacts.tsx
+│   │   └── college/
+│   │       ├── About.css
+│   │       ├── About.tsx
+│   │       ├── Academics.css
+│   │       ├── Academics.tsx
+│   │       ├── Admissions.css
+│   │       ├── Admissions.tsx
+│   │       ├── Contact.css
+│   │       ├── Contact.tsx
+│   │       ├── Events.css
+│   │       ├── Events.tsx
+│   │       ├── Gallery.css
+│   │       ├── Gallery.tsx
+│   │       ├── Home.css
+│   │       └── Home.tsx
+│   ├── services/
+│   │   ├── aboutApi.ts
+│   │   ├── academicApi.ts
+│   │   └── contactApi.ts
+│   ├── styles/
+│   │   └── global.css
+│   ├── types/
+│   │   └── index.ts
+│   ├── utils/
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── eslint.config.js
+├── index.html
+├── package.json
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── README.md
+```
+
+## Features
+
+- **College Website**: Public-facing pages including Home, About, Academics, Admissions, Events, Gallery, and Contact
+- **Admin Panel**: Administrative dashboard for managing content, contacts, and university data
+- **Responsive Design**: Mobile-first approach with Aurora University branding
+- **TypeScript**: Full type safety throughout the application
+- **Modern UI**: Clean, professional design with Aurora University color scheme (#800020)
+
+## Technologies Used
+
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **React Router** for navigation
+- **Custom CSS** with Aurora University styling
+- **Session-based Authentication** for admin access
+
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
