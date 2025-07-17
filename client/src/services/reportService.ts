@@ -1,6 +1,6 @@
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 import type { ContactSubmission } from './contactApi';
 
 interface FilterOptions {
@@ -163,7 +163,7 @@ export class ReportService {
       ]);
 
       // Add table using autoTable plugin
-      (doc as any).autoTable({
+      autoTable(doc, {
         head: [tableHeaders],
         body: tableData,
         startY: yPosition,
