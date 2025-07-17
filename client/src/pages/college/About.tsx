@@ -36,7 +36,7 @@ export const About: React.FC = () => {
       <div className="container">
         {/* Hero Section */}
         <section className="about-hero">
-          <h1 className="page-title">About Excellence University</h1>
+          <h1 className="page-title">About Aurora University</h1>
           <p className="page-subtitle">
             Empowering minds, shaping futures, and building tomorrow's leaders since 1985.
           </p>
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
             </div>
             <div className="stat-item">
               <div className="stat-number">{aboutData.stats.yearsOfExcellence}+</div>
-              <div className="stat-label">Years of Excellence</div>
+              <div className="stat-label">Years of Service</div>
             </div>
           </div>
         </section>

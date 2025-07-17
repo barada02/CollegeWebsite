@@ -10,7 +10,7 @@ export const Admissions: React.FC = () => {
         <section className="admissions-hero">
           <h1 className="page-title">Admissions</h1>
           <p className="page-subtitle">
-            Join our community of learners and leaders. Start your journey with Excellence University.
+            Join our community of learners and leaders. Start your journey with Aurora University.
           </p>
         </section>
 
@@ -79,7 +79,7 @@ export const Admissions: React.FC = () => {
         <section className="admissions-cta">
           <div className="cta-content">
             <h2>Ready to Apply?</h2>
-            <p>Take the first step towards your future at Excellence University.</p>
+            <p>Take the first step towards your future at Aurora University.</p>
             <div className="cta-buttons">
               <Button variant="college" size="lg">Apply Now</Button>
               <Button variant="college" size="lg">Request Info</Button>

@@ -79,7 +79,7 @@ export const Home: React.FC = () => {
       <section className="features-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose Excellence University?</h2>
+            <h2 className="section-title">Why Choose Aurora University?</h2>
             <p className="section-description">
               Discover what makes us a leading institution in higher education
             </p>
@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">🏆</div>
-              <h3 className="feature-title">Academic Excellence</h3>
+              <h3 className="feature-title">Academic Aurora</h3>
               <p className="feature-description">
                 Top-ranked programs with world-class faculty and cutting-edge research opportunities.
               </p>
