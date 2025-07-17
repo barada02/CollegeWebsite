@@ -1,53 +1,18 @@
-/* Home Page Styles */
+/* Home Page Styles - Aurora University Theme */
 .home-page {
   background-color: var(--college-background);
 }
 
-/* Hero Section */
+/* Hero Section with Image Gallery */
 .hero-section {
-  padding: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 0;
+  margin-bottom: var(--spacing-2xl);
 }
 
-.hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
-  align-items: center;
-}
-
-.hero-text {
-  max-width: 600px;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--college-text);
-  margin-bottom: var(--spacing-lg);
-}
-
-.highlight {
-  color: var(--college-primary);
-}
-
-.hero-description {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: var(--college-text-light);
-  margin-bottom: var(--spacing-xl);
-}
-
-.hero-actions {
-  display: flex;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
+.hero-gallery-container {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
   align-items: center;
 }
 
@@ -69,10 +34,48 @@
   margin-bottom: var(--spacing-md);
 }
 
+/* Welcome Section - Action Area below Gallery */
+.welcome-section {
+  padding: var(--spacing-2xl) 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  text-align: center;
+}
+
+.welcome-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #800020;
+  margin-bottom: var(--spacing-lg);
+}
+
+.highlight {
+  color: #800020;
+}
+
+.welcome-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--college-text-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.welcome-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* Stats Section */
 .stats-section {
   padding: var(--spacing-2xl) 0;
-  background-color: var(--college-primary);
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
   color: white;
 }
 
@@ -135,14 +138,16 @@
   background: white;
   padding: var(--spacing-xl);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 20px rgba(128, 0, 32, 0.1);
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(128, 0, 32, 0.1);
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(128, 0, 32, 0.2);
+  border-color: rgba(128, 0, 32, 0.2);
 }
 
 .feature-icon {
@@ -230,7 +235,7 @@
 /* CTA Section */
 .cta-section {
   padding: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, var(--college-primary), var(--college-secondary));
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
   color: white;
 }
 

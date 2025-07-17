@@ -77,7 +77,7 @@ export const Dashboard: React.FC = () => {
         <div className="dashboard-header">
           <div>
             <h1 className="dashboard-title">Dashboard Overview</h1>
-            <p className="dashboard-subtitle">Welcome back! Here's what's happening at Excellence University.</p>
+            <p className="dashboard-subtitle">Welcome back! Here's what's happening at Aurora University.</p>
           </div>
         </div>
 
