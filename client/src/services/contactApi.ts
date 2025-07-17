@@ -146,6 +146,23 @@ export class ContactApiService {
       throw new Error('Failed to delete contact');
     }
   }
+
+  // Reply to contact (admin)
+  static async replyToContact(
+    id: string, 
+    replyMessage: string
+  ): Promise<{ success: boolean; data?: ContactSubmission; message?: string }> {
+    try {
+      const response = await api.post(`/contact/${id}/reply`, { replyMessage });
+      return response.data;
+    } catch (error) {
+      console.error('Error sending reply:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        return error.response.data;
+      }
+      throw new Error('Failed to send reply');
+    }
+  }
 }
 
 export default ContactApiService;

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Contact, { IContact } from '../models/Contact';
+import EmailService from '../services/emailService';
 
 export class ContactController {
   // Submit contact form (public endpoint)
@@ -286,6 +287,94 @@ export class ContactController {
       res.status(500).json({
         success: false,
         message: 'Error deleting contact submission',
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  }
+
+  // Reply to contact submission (admin only)
+  public async replyToContact(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const { replyMessage } = req.body;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'Contact ID is required'
+        });
+        return;
+      }
+
+      if (!replyMessage || replyMessage.trim().length === 0) {
+        res.status(400).json({
+          success: false,
+          message: 'Reply message is required'
+        });
+        return;
+      }
+
+      if (replyMessage.trim().length < 10) {
+        res.status(400).json({
+          success: false,
+          message: 'Reply message must be at least 10 characters long'
+        });
+        return;
+      }
+
+      // Find the contact
+      const contact = await Contact.findById(id);
+
+      if (!contact) {
+        res.status(404).json({
+          success: false,
+          message: 'Contact submission not found'
+        });
+        return;
+      }
+
+      // Initialize email service
+      const emailService = new EmailService();
+
+      // Verify email service connection
+      const isEmailServiceReady = await emailService.verifyConnection();
+      if (!isEmailServiceReady) {
+        res.status(500).json({
+          success: false,
+          message: 'Email service is not available. Please try again later.'
+        });
+        return;
+      }
+
+      // Send reply email
+      const emailSent = await emailService.sendContactReply(contact, replyMessage.trim());
+
+      if (!emailSent) {
+        res.status(500).json({
+          success: false,
+          message: 'Failed to send reply email. Please try again.'
+        });
+        return;
+      }
+
+      // Update contact with reply message in adminNotes and set status to replied
+      contact.adminNotes = replyMessage.trim();
+      contact.status = 'replied';
+      contact.repliedAt = new Date();
+      
+      await contact.save();
+
+      res.status(200).json({
+        success: true,
+        message: 'Reply sent successfully and contact updated',
+        data: contact
+      });
+
+    } catch (error) {
+      console.error('Error replying to contact:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error sending reply. Please try again later.',
         error: error instanceof Error ? error.message : 'Unknown error'
       });
     }

@@ -11,6 +11,7 @@ router.post('/submit', contactController.submitContact);
 router.get('/', /* adminAuth, */ contactController.getContacts);
 router.get('/:id', /* adminAuth, */ contactController.getContactById);
 router.put('/:id/status', /* adminAuth, */ contactController.updateContactStatus);
+router.post('/:id/reply', /* adminAuth, */ contactController.replyToContact);
 router.delete('/:id', /* adminAuth, */ contactController.deleteContact);
 
 export default router;
