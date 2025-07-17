@@ -172,14 +172,12 @@
   border-top: 1px solid var(--admin-border);
 }
 
-.demo-note {
-  background-color: #f3f4f6;
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
+.copyright-note {
   font-size: 0.875rem;
   color: var(--admin-text-light);
   text-align: center;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* Additional Info */

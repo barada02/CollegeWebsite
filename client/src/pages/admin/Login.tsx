@@ -20,9 +20,14 @@ export const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // For MVP - just redirect to dashboard without actual authentication
+    // Basic validation
+    if (!formData.email || !formData.password) {
+      alert('Please fill in all fields');
+      return;
+    }
+    
+    // For now, just redirect to dashboard
     console.log('Login attempt:', formData);
-    alert('Login functionality will be implemented later. Redirecting to dashboard...');
     navigate('/admin/dashboard');
   };
 
@@ -97,10 +102,8 @@ export const Login: React.FC = () => {
           </form>
 
           <div className="login-footer">
-            <p className="demo-note">
-              <strong>Demo Credentials:</strong><br />
-              Email: admin@excellenceuniversity.edu<br />
-              Password: admin123
+            <p className="copyright-note">
+              © 2024 Aurora University. All rights reserved.
             </p>
           </div>
         </div>
@@ -109,7 +112,7 @@ export const Login: React.FC = () => {
         <div className="login-info">
           <h3>Need Access?</h3>
           <p>
-            Contact the IT department at <strong>it@excellenceuniversity.edu</strong> 
+            Contact the IT department at <strong>it@aurorauni.edu</strong> 
             or call <strong>(555) 123-4567</strong> for account setup or password reset.
           </p>
         </div>

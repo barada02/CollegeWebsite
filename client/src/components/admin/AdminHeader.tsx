@@ -8,7 +8,7 @@ export const AdminHeader: React.FC = () => {
     <header className="admin-header">
       <div className="header-content">
         <div className="header-left">
-          <h1 className="page-title">Excellence University Admin</h1>
+          <h1 className="page-title">Aurora University Admin</h1>
         </div>
         
         <div className="header-right">

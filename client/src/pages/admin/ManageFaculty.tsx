@@ -34,15 +34,6 @@ export const ManageFaculty: React.FC = () => {
   // Show loading spinner if either faculty data or academic structure is loading
   const isLoading = loading || academicLoading;
 
-  // Department statistics - add null check
-  const departmentStats = (departments || []).map(dept => {
-    const facultyCount = (faculty || []).filter(f => f.departmentId === dept._id).length;
-    return {
-      ...dept,
-      facultyCount
-    };
-  });
-
   // Filter faculty based on search and filters - add null check
   const filteredFaculty = (faculty || []).filter(f => {
     const matchesSearch = !searchQuery || 
@@ -224,33 +215,6 @@ export const ManageFaculty: React.FC = () => {
           Add New Faculty
         </Button>
       </div>
-
-      {/* Department Overview */}
-      <section className="department-overview">
-        <h2 className="section-title">Department Overview</h2>
-        <div className="departments-grid">
-          {departmentStats.map((dept) => (
-            <div key={dept._id} className="department-card">
-              <h3 className="department-name">{dept.name}</h3>
-              <div className="department-stats">
-                <div className="stat-item">
-                  <span className="stat-number">{dept.facultyCount}</span>
-                  <span className="stat-label">Faculty Members</span>
-                </div>
-              </div>
-              <div className="department-actions">
-                <Button 
-                  variant="admin" 
-                  size="sm"
-                  onClick={() => setSelectedDepartment(dept._id)}
-                >
-                  View All
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Faculty List */}
       <section className="faculty-list">

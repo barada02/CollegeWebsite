@@ -11,15 +11,15 @@ export const CollegeFooter: React.FC = () => {
           <div className="footer-section">
             <div className="footer-logo">
               <div className="logo-placeholder">
-                <span className="logo-text">📚</span>
+                <img src="/src/assets/white-logo.png" alt="Aurora University Logo" className="logo-image" />
               </div>
               <div>
-                <h3 className="footer-title">Excellence University</h3>
+                <h3 className="footer-title">Aurora University</h3>
                 <p className="footer-subtitle">Building Tomorrow's Leaders</p>
               </div>
             </div>
             <p className="footer-description">
-              Excellence University is committed to providing world-class education 
+              Aurora University is committed to providing world-class education 
               and fostering innovation, research, and community engagement.
             </p>
           </div>
@@ -47,28 +47,12 @@ export const CollegeFooter: React.FC = () => {
               <li><a href="#calendar">Academic Calendar</a></li>
             </ul>
           </div>
-
-          {/* Contact Info */}
-          <div className="footer-section">
-            <h4 className="section-title">Contact Info</h4>
-            <div className="contact-info">
-              <p>📍 123 University Avenue<br />Hyderabad, Telangana, India</p>
-              <p>📞 +191 9100000256</p>
-              <p>✉️ info@excellenceuniversity.edu</p>
-            </div>
-            <div className="social-links">
-              <a href="#facebook" className="social-link">📘</a>
-              <a href="#twitter" className="social-link">🐦</a>
-              <a href="#linkedin" className="social-link">💼</a>
-              <a href="#instagram" className="social-link">📷</a>
-            </div>
-          </div>
         </div>
 
         {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; 2024 Excellence University. All rights reserved.</p>
+            <p>&copy; 2025 Aurora University. All rights reserved.</p>
             <div className="footer-bottom-links">
               <a href="#privacy">Privacy Policy</a>
               <a href="#terms">Terms of Service</a>

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Contact, { IContact } from '../models/Contact';
+import EmailService from '../services/emailService';
 
 export class ContactController {
   // Submit contact form (public endpoint)
@@ -289,5 +290,272 @@ export class ContactController {
         error: error instanceof Error ? error.message : 'Unknown error'
       });
     }
+  }
+
+  // Reply to contact submission (admin only)
+  public async replyToContact(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const { replyMessage } = req.body;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'Contact ID is required'
+        });
+        return;
+      }
+
+      if (!replyMessage || replyMessage.trim().length === 0) {
+        res.status(400).json({
+          success: false,
+          message: 'Reply message is required'
+        });
+        return;
+      }
+
+      if (replyMessage.trim().length < 10) {
+        res.status(400).json({
+          success: false,
+          message: 'Reply message must be at least 10 characters long'
+        });
+        return;
+      }
+
+      // Find the contact
+      const contact = await Contact.findById(id);
+
+      if (!contact) {
+        res.status(404).json({
+          success: false,
+          message: 'Contact submission not found'
+        });
+        return;
+      }
+
+      // Initialize email service
+      const emailService = new EmailService();
+
+      // Verify email service connection
+      const isEmailServiceReady = await emailService.verifyConnection();
+      if (!isEmailServiceReady) {
+        res.status(500).json({
+          success: false,
+          message: 'Email service is not available. Please try again later.'
+        });
+        return;
+      }
+
+      // Send reply email
+      const emailSent = await emailService.sendContactReply(contact, replyMessage.trim());
+
+      if (!emailSent) {
+        res.status(500).json({
+          success: false,
+          message: 'Failed to send reply email. Please try again.'
+        });
+        return;
+      }
+
+      // Update contact with reply message in adminNotes and set status to replied
+      contact.adminNotes = replyMessage.trim();
+      contact.status = 'replied';
+      contact.repliedAt = new Date();
+      
+      await contact.save();
+
+      res.status(200).json({
+        success: true,
+        message: 'Reply sent successfully and contact updated',
+        data: contact
+      });
+
+    } catch (error) {
+      console.error('Error replying to contact:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error sending reply. Please try again later.',
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  }
+
+  // Get leads analytics for admin dashboard
+  public async getLeadsAnalytics(req: Request, res: Response): Promise<void> {
+    try {
+      console.log('getLeadsAnalytics called with query:', req.query);
+      
+      const { startDate, endDate, subject, status } = req.query;
+
+      // Build filter criteria
+      const filter: any = {};
+
+      // Date range filter
+      if (startDate || endDate) {
+        filter.submittedAt = {};
+        if (startDate) {
+          const start = new Date(startDate as string);
+          if (isNaN(start.getTime())) {
+            res.status(400).json({
+              success: false,
+              message: 'Invalid start date format'
+            });
+            return;
+          }
+          filter.submittedAt.$gte = start;
+        }
+        if (endDate) {
+          const end = new Date(endDate as string);
+          if (isNaN(end.getTime())) {
+            res.status(400).json({
+              success: false,
+              message: 'Invalid end date format'
+            });
+            return;
+          }
+          filter.submittedAt.$lte = end;
+        }
+      }
+
+      // Subject filter
+      if (subject && subject !== '') {
+        filter.subject = { $regex: subject, $options: 'i' };
+      }
+
+      // Status filter
+      if (status && status !== '') {
+        filter.status = status;
+      }
+
+      console.log('Filter criteria:', filter);
+
+      // Get filtered contacts
+      const contacts = await Contact.find(filter).sort({ submittedAt: -1 });
+      console.log(`Found ${contacts.length} contacts`);
+
+      // Calculate analytics
+      const analytics = this.calculateLeadsAnalytics(contacts);
+
+      res.json({
+        success: true,
+        data: {
+          contacts,
+          analytics,
+          filters: { startDate, endDate, subject, status },
+          total: contacts.length
+        }
+      });
+
+    } catch (error) {
+      console.error('Error getting leads analytics:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error fetching leads analytics',
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  }
+
+  // Calculate leads analytics
+  private calculateLeadsAnalytics(contacts: IContact[]) {
+    const total = contacts.length;
+    
+    // Status breakdown
+    const statusBreakdown = {
+      new: contacts.filter(c => c.status === 'new').length,
+      read: contacts.filter(c => c.status === 'read').length,
+      replied: contacts.filter(c => c.status === 'replied').length,
+      archived: contacts.filter(c => c.status === 'archived').length
+    };
+
+    // Priority calculation based on keywords
+    const highPriorityKeywords = [
+      'admission', 'enrollment', 'apply', 'application', 'program', 'course',
+      'fee', 'fees', 'scholarship', 'deadline', 'urgent', 'immediate'
+    ];
+    
+    const mediumPriorityKeywords = [
+      'information', 'details', 'about', 'inquiry', 'question', 'help',
+      'guidance', 'counseling', 'career', 'placement'
+    ];
+
+    const priorityBreakdown = {
+      high: 0,
+      medium: 0,
+      low: 0
+    };
+
+    contacts.forEach(contact => {
+      const text = (contact.subject + ' ' + contact.message).toLowerCase();
+      
+      const hasHighPriority = highPriorityKeywords.some(keyword => text.includes(keyword));
+      const hasMediumPriority = mediumPriorityKeywords.some(keyword => text.includes(keyword));
+      
+      if (hasHighPriority) {
+        priorityBreakdown.high++;
+      } else if (hasMediumPriority) {
+        priorityBreakdown.medium++;
+      } else {
+        priorityBreakdown.low++;
+      }
+    });
+
+    // Subject analysis
+    const subjectAnalysis: { [key: string]: number } = {};
+    contacts.forEach(contact => {
+      const subject = contact.subject.toLowerCase();
+      // Extract key topics
+      if (subject.includes('admission') || subject.includes('enrollment')) {
+        subjectAnalysis['Admissions'] = (subjectAnalysis['Admissions'] || 0) + 1;
+      } else if (subject.includes('course') || subject.includes('program')) {
+        subjectAnalysis['Courses'] = (subjectAnalysis['Courses'] || 0) + 1;
+      } else if (subject.includes('fee') || subject.includes('scholarship')) {
+        subjectAnalysis['Financial'] = (subjectAnalysis['Financial'] || 0) + 1;
+      } else if (subject.includes('placement') || subject.includes('career')) {
+        subjectAnalysis['Placement'] = (subjectAnalysis['Placement'] || 0) + 1;
+      } else {
+        subjectAnalysis['General'] = (subjectAnalysis['General'] || 0) + 1;
+      }
+    });
+
+    // Time-based analysis (last 7 days vs previous period)
+    const now = new Date();
+    const last7Days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const previous7Days = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+
+    const recentLeads = contacts.filter(c => new Date(c.submittedAt) >= last7Days).length;
+    const previousLeads = contacts.filter(c => 
+      new Date(c.submittedAt) >= previous7Days && 
+      new Date(c.submittedAt) < last7Days
+    ).length;
+
+    const growth = previousLeads > 0 ? ((recentLeads - previousLeads) / previousLeads) * 100 : 0;
+
+    // Potential students (based on admin notes and keywords)
+    const potentialStudents = contacts.filter(contact => {
+      const notes = contact.adminNotes?.toLowerCase() || '';
+      const text = (contact.subject + ' ' + contact.message).toLowerCase();
+      
+      return notes.includes('student') || 
+             notes.includes('admission') || 
+             notes.includes('enrollment') ||
+             text.includes('admission') ||
+             text.includes('enrollment') ||
+             text.includes('apply');
+    }).length;
+
+    const conversionRate = total > 0 ? Math.round((potentialStudents / total) * 100 * 100) / 100 : 0;
+
+    return {
+      totalLeads: total,
+      statusBreakdown,
+      priorityBreakdown,
+      subjectAnalysis,
+      recentLeads,
+      growth: Math.round(growth * 100) / 100,
+      potentialStudents,
+      conversionRate,
+      responseRate: total > 0 ? Math.round((statusBreakdown.replied / total) * 100 * 100) / 100 : 0
+    };
   }
 }

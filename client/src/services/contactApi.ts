@@ -146,6 +146,57 @@ export class ContactApiService {
       throw new Error('Failed to delete contact');
     }
   }
+
+  // Reply to contact (admin)
+  static async replyToContact(
+    id: string, 
+    replyMessage: string
+  ): Promise<{ success: boolean; data?: ContactSubmission; message?: string }> {
+    try {
+      const response = await api.post(`/contact/${id}/reply`, { replyMessage });
+      return response.data;
+    } catch (error) {
+      console.error('Error sending reply:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        return error.response.data;
+      }
+      throw new Error('Failed to send reply');
+    }
+  }
+
+  // Get leads analytics (admin)
+  static async getLeadsAnalytics(params?: {
+    startDate?: string;
+    endDate?: string;
+    subject?: string;
+    status?: string;
+  }): Promise<{
+    success: boolean;
+    data?: {
+      contacts: ContactSubmission[];
+      analytics: any;
+      filters: any;
+      total: number;
+    };
+    message?: string;
+  }> {
+    try {
+      const queryParams = new URLSearchParams();
+      if (params?.startDate) queryParams.append('startDate', params.startDate);
+      if (params?.endDate) queryParams.append('endDate', params.endDate);
+      if (params?.subject) queryParams.append('subject', params.subject);
+      if (params?.status) queryParams.append('status', params.status);
+
+      const response = await api.get(`/contact/leads/analytics?${queryParams.toString()}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching leads analytics:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        return error.response.data;
+      }
+      throw new Error('Failed to fetch leads analytics');
+    }
+  }
 }
 
 export default ContactApiService;

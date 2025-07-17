@@ -49,7 +49,7 @@ const Academics: React.FC = () => {
     <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', color: '#2c3e50', marginBottom: '10px' }}>Academic Excellence</h1>
+        <h1 style={{ fontSize: '2.5rem', color: '#2c3e50', marginBottom: '10px' }}>Academic Programs</h1>
         <p style={{ fontSize: '1.2rem', color: '#7f8c8d', marginBottom: '30px' }}>
           Discover our comprehensive range of academic programs across {schools?.length} specialized schools
         </p>

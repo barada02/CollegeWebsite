@@ -80,7 +80,7 @@ export const Faculty: React.FC = () => {
         <div className="page-header">
           <h1 className="page-title">Our Faculty</h1>
           <p className="page-subtitle">
-            Meet our distinguished faculty members who are committed to excellence in education and research
+            Meet our distinguished faculty members who are committed to academic excellence in education and research
           </p>
         </div>
 

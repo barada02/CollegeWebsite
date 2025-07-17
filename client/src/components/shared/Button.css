@@ -2,25 +2,26 @@
 
 /* Base button styles inherited from global.css */
 
-/* College button variant */
+/* Aurora University College button variant - Premium Maroon Theme */
 .btn-college {
-  background-color: var(--college-primary);
+  background: linear-gradient(135deg, #800020 0%, #660018 100%);
   color: white;
-  border: 2px solid var(--college-primary);
+  border: 2px solid #800020;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 15px rgba(128, 0, 32, 0.3);
+  transition: all 0.3s ease;
 }
 
 .btn-college:hover:not(:disabled) {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+  background: linear-gradient(135deg, #660018 0%, #4d0012 100%);
+  border-color: #660018;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(128, 0, 32, 0.4);
 }
 
 .btn-college:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(128, 0, 32, 0.3);
 }
 
 /* Admin button variant */
