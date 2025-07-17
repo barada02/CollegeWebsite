@@ -8,7 +8,9 @@ export const Home: React.FC = () => {
   // College images for the gallery
   const collegeImages = [
     '/src/assets/college/college_Building.jpg',
-    '/src/assets/college/college_b1.jpg'
+    '/src/assets/college/college_b1.jpg',
+    '/src/assets/college/magazine.jpg',
+    '/src/assets/college/vc.jpg'
   ];
 
   return (
