@@ -8,6 +8,8 @@ const contactController = new ContactController();
 router.post('/submit', contactController.submitContact);
 
 // Admin routes (protected - uncomment middleware when auth is ready)
+// Note: Specific routes must come before parameterized routes
+router.get('/leads/analytics', /* adminAuth, */ contactController.getLeadsAnalytics);
 router.get('/', /* adminAuth, */ contactController.getContacts);
 router.get('/:id', /* adminAuth, */ contactController.getContactById);
 router.put('/:id/status', /* adminAuth, */ contactController.updateContactStatus);
